@@ -27,7 +27,7 @@ public:
 public:
 	USoundWaveProceduralWebView(const FObjectInitializer& ObjectInitializer);
 
-	int32 OnGeneratePCMAudio(TArray<uint8>& OutAudio, int32 NumSamples);
+	int32 OnGeneratePCMAudio(TArray<uint8>& OutAudio, int32 NumSamples, const int32 Clock);
 	void  AddAudioData(const float* AudioData, size_t NFrames, size_t NChannels, int64_t pts);
 	int32 GetFrameNum();
 protected:

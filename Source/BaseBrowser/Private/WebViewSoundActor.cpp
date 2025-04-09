@@ -22,7 +22,7 @@ Audio::EAudioMixerStreamDataFormat::Type USoundWaveProceduralWebView::GetGenerat
 	return Audio::EAudioMixerStreamDataFormat::Type::Float;
 }
 
-int32 USoundWaveProceduralWebView::OnGeneratePCMAudio(TArray<uint8>& OutBuffer, int32 NumSamples) {
+int32 USoundWaveProceduralWebView::OnGeneratePCMAudio(TArray<uint8>& OutBuffer, int32 NumSamples, const int32 Clock) {
 	int64_t milli = (FDateTime::UtcNow() - FDateTime(1970, 1, 1)).GetTotalMilliseconds();
 	int64_t diff = 9;
 	int32 ReadNum = 0;
