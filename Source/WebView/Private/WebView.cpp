@@ -40,13 +40,17 @@ void FWebViewModule::StartupModule()
 #if WITH_EDITOR 
 	ICefCoreLIB::get()->Load();
 #endif
+// JIM: take out windows
+#if PLATFORM_ANDROID
 	webview::IBrowserInstance::Get().check_brand(ICEF3LIB::get()->Branch());
 	webview::IBrowserInstance::Get().Load();
+
 #if WITH_EDITOR 
 	FEditorDelegates::PausePIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnEndPIE(); });
 	FEditorDelegates::BeginPIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnBeginPIE(); });
 	FEditorDelegates::EndPIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnEndPIE(); });
 	FEditorDelegates::ResumePIE.AddLambda([](bool) {webview::IBrowserInstance::Get().OnBeginPIE(); });
+#endif
 #endif
 #endif
 }

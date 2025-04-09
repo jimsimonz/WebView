@@ -112,13 +112,13 @@ void CEF3LIB::LoadCEF3Modules()
 	//UE_LOG(WebViewLog, Error, TEXT("CEF3DLL::LoadCEF3Modules"));
 	FString libPath = LibPath();
 #if defined CEF_WINDOWS
-	FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("Path")) + TEXT(";") + libPath;
+	/*FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("Path")) + TEXT(";") + libPath;
 	FPlatformMisc::SetEnvironmentVar(TEXT("Path"), *envPath);
 	FPlatformProcess::PushDllDirectory(*libPath);
 	if (LoadDllCEF(FPaths::Combine(*libPath, TEXT("chrome_elf.dll")))) {
 		LoadDllCEF(FPaths::Combine(*libPath, TEXT("libcef.dll")));
 	}
-	FPlatformProcess::PopDllDirectory(*libPath);
+	FPlatformProcess::PopDllDirectory(*libPath);*/
 #elif defined CEF_MAC
 	FString envPath = FPlatformMisc::GetEnvironmentVariable(TEXT("LD_LIBRARY_PATH")) + TEXT(":") + libPath;
 	FPlatformMisc::SetEnvironmentVar(TEXT("LD_LIBRARY_PATH"), *envPath);
